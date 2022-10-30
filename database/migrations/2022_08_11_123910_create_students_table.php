@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('tanggal_pelaksanaan');
             $table->string('tempat_platfrom');
             $table->string('email');
+            $table->string('kebutuhan');
+            $table->string('qty_kebutuhan');
             $table->string('option1');
             
             $table->timestamps();

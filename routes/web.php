@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\MahasiswaController;
-
+use App\Http\Controllers\transactionController;
 
 
 
@@ -29,6 +29,10 @@ Route::get('mahasiswa', function () {
 
 Route::resource('students', StudentController::class);
 Route::resource('siswa', SiswaController::class);
+
+// Route Transaction //
+Route::get('transaction' , [TransactionController::class , 'index'])->name('transaction.index');
+Route::post('transaction/create' , [TransactionController::class , 'store'])->name('transaction.store');
 
 // Route::resource('needs', NeedController::class);
 // Auth::routes();

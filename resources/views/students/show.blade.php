@@ -85,7 +85,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
                                             <strong>list kebuthan:</strong>
-                                            {{ $student->kebutuhan }} : {{$student->qty}}
+                                            {{ $student->kebutuhan }} QTY = {{$student->qty_kebutuhan}}
                                         </div>
                                     </div>
                                     

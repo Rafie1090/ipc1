@@ -47,6 +47,8 @@
 
             <td>
                 <a class="btn btn-info" href="{{ route('students.show',$student->id) }}" style="transform: rotate()" ><i class="bi bi-eye"></i></a>
+                <a class="btn btn-primary" href="{{ route('transaction.index',$student->id) }}" style="transform: rotate()" ><i class="bi bi-pen"></i></a>
+                
                 @csrf
                 <div class="col-4">
                     <div class="from-group">

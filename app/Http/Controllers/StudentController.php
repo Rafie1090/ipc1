@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use App\Models\Student;
 use App\Models\Kebutuhan;
 use Illuminate\Http\Request;
-
+use DB;
 class StudentController extends Controller
 {
     /**
@@ -53,14 +53,9 @@ class StudentController extends Controller
                 'tempat_platfrom' => $request->tempat_platfrom,
                 'email' => $request->email,
                 'option1' => $request->option1,
+                'kebutuhan' => $request->kebutuhan,
+                'qty_kebutuhan' => $request->qty
             ]);
-
-            kebutuhan::create([
-                'id_user' => Str::uuid()->toString(),
-                'nama_kebutuhan' => $request->kebutuhan,
-                'qty' => $request->qty
-            ]);
-
             return redirect()->route('students.index')->with('succes', 'berhasil');
         
     }

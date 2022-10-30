@@ -164,19 +164,33 @@ $(document).ready(function(){
         	
     });
 	// Edit row on edit button click
-	$(document).on("click", ".edit", function(){		
-        $(this).parents("tr").find("td:not(:last-child)").each(function(){
-			$(this).html('<input type="text" class="form-control" name="kebutuhan" value="' + $(this).text() + '">');
-			$(this).html('<input type="number" class="form-control" name="qty" value="' + $(this).text() + '">');
-		});		
-		$(this).parents("tr").find(".add, .edit").toggle();
-		$(".add-new").attr("disabled", "disabled");
+	// $(document).on("click", ".edit", function(){		
+    //     $(this).parents("tr").find("td:not(:last-child)").each(function(){
+    //         $(this).html('<form action="{{ route('students.store') }}" method="POST" enctype="multipart/form-data">');
+    //         $(this).html('@csrf');
+	// 		$(this).html('<input type="text" class="form-control" name="kebutuhan" value="' + $(this).text() + '">');
+	// 		$(this).html('<input type="text" class="form-control" name="qty" value="' + $(this).text() + '">');
+    //         $(this).html('</form>');
+	// 	});		
+	// 	$(this).parents("tr").find(".add, .edit").toggle();
+	// 	$(".add-new").attr("disabled", "disabled");
+    // });
+	// // Delete row on delete button click
+	// $(document).on("click", ".delete", function(){
+    //     $(this).parents("tr").remove();
+	// 	$(".add-new").removeAttr("disabled");
+    // });
+        
+    var i = 0;
+    $("#add-btn").click(function(){
+    ++i;
+    $("#dynamicAddRemove").append('<tr><td><input type="text" name="kebutuhan" placeholder="Enter title" class="form-control" /></td><td><input type="text" name="qty" placeholder="QTY" class="form-control" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
+    // $("#dynamicAddRemove").append('<td><input type="text" name="moreFields['+i+'][title]" placeholder="QTY" class="form-control" /></td><td><button type="button" class="btn btn-danger remove-tr">Remove</button></td></tr>');
     });
-	// Delete row on delete button click
-	$(document).on("click", ".delete", function(){
-        $(this).parents("tr").remove();
-		$(".add-new").removeAttr("disabled");
-    });
+    $(document).on('click', '.remove-tr', function(){  
+    $(this).parents('tr').remove();
+    });  
+
     
 });
 </script>
@@ -274,20 +288,28 @@ $(document).ready(function(){
           </div><div class="form-check">
             <input class="form-check-input" type="radio" id="check2" name="option1" value="Anggaran Intansi" onclick="setChecks(this)">
             <label class="form-check-label">Anggaran Intansi</label>
-           
-            {{-- <div class="form-group row">
-                <input class="form-check-input" type="radio" id="check3" name="option3" value="Anggaran Intansi" onclick="setChecks(this)"  >
-                <label class="form-check-label col-sm-2 col-form-control">Lainya :</label>
-                <div class="col-sm-10">
-                    <input class="" type="text" name="option1" id="check1" class="" placeholder="Lainya" >
-                                </div> --}}
-              </div>
             </div>
-        </div>   <br>
-       
-        </div>
+        </div><br><br>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+        <table class="table table-bordered" id="dynamicAddRemove">  
+            <tr>
+                <th>Title</th>
+                <th>QTY</th>
+                <th>Action</th>
+            </tr>
+            <tr>        
+            <td><input type="text"  name="kebutuhan" placeholder="Enter title" class="form-control" /></td>  
+            <td><input type="text"  name="qty" placeholder="QTY" class="form-control" /></td>  
+            <td><button type="button" name="add" id="add-btn" class="btn btn-success">Add More</button></td>  
+            </tr>  
+             {{-- <button type="submit" class="btn btn-primary" id="" style="margin-left:1000px"><i class="bi bi-send-fill"></i> kirim</button> --}}
+        </table> 
+            <button type="submit" class="btn btn-primary" id="" style="margin-left:1000px"><i class="bi bi-send-fill"></i> kirim</button>
+        </form>
     </div>
-    <!DOCTYPE html>
+    </div>
+    </div>
+    {{-- <!DOCTYPE html>
 <div class="container-lg">
     <div class="table-responsive">
         <div class="">
@@ -328,5 +350,5 @@ $(document).ready(function(){
 </body>
 </html>
      <br><br><br><b><br></b>
-</form>
+</form> --}}
 @endsection
